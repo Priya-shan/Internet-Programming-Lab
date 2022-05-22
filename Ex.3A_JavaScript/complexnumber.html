@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Numbers</title>
+</head>
+<body>
+    <h2>3+i2</h2>
+    <h2>5+i8</h2>
+    <h3 id="result"></h3>
+    <script>
+        var a="3+i2";
+        var b="5+i8";
+        function addcomplex(a,b){
+            var a_arr=a.split("+");
+            var a_real=parseInt(a_arr[0]);
+            var a_img=parseInt(a_arr[1].substring(1));
+            var b_arr=b.split("+");
+            var b_real=parseInt(b_arr[0]);
+            var b_img=parseInt(b_arr[1].substring(1));
+
+            real_sum=a_real+b_real;
+            img_sum=a_img+b_img;
+            return ""+real_sum+"+i"+img_sum;   
+        }
+        document.getElementById("result").innerHTML=addcomplex(a,b);
+    </script>
+</body>
+</html>

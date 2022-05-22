@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <body> 
+        <h2>Enter String and submit</h2> 
+        <form name="form1" action="#"> 
+        <input type='text' name='text1'/>
+        <input type="submit" name="submit" value="Submit" onclick="check(document.form1.text1.value)"/>        
+        </form>
+    
+        <script> 
+
+            function checkIfStartsWithVowels(str){ 
+                if (!(str[0] == 'A' || str[0] == 'a' || str[0] == 'E' || str[0] == 'e' || str[0] == 'I' || str[0] == 'i' || str[0] == 'O' || str[0] == 'o' || str[0] == 'U' || str[0] == 'u'))
+                    return 1;
+                else 
+                    return 0; 
+                } 
+            
+            function check(str) {
+                if (checkIfStartsWithVowels(str))
+                    alert("Not a valid string"); 
+                else
+                    alert("valid String");
+            } 
+        </script> 
+</body>
+
+</html>

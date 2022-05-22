@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No.of.Occurences of a word</title>
+</head>
+<body>
+    <h4 id="line"></h4>
+    <h3 id="result"></h3>
+    <script>
+        var input=window.prompt("Enter the word to check for no.of.occurence");
+        var line="Fear leads to anger ; anger leads to hatred ; hatred leads to conflict ; conflict leads to suffering"
+        let arr=line.split(" ");
+        var count=0;
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]==input){
+                count=count+1;
+            }
+        }
+        document.getElementById("line").innerHTML=line;
+        document.getElementById("result").innerHTML=count;
+    </script>
+</body>
+</html>

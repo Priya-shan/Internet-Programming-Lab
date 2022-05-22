@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Java Script Form Validation</h1>
+    <h4 id="error" class="error"></h4>
+    <form name="loginform" onsubmit="return validate();">
+        <span><label for="name">Name:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <span><input type="text" id="name" name="name"></span>
+        <label id="nameerror" class="error"></label><br><br>
+
+        <span><label for="add">Address:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <span><input type="text" id="add" name="add"></span>
+        <label id="adderror" class="error"></label><br><br>
+
+        <span><label for="zcode">ZipCode:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <span><input type="number" id="zcode" name="zcode"></span>
+        <label id="zcodeerror" class="error"></label><br><br>
+
+        <span><label for="country">Country:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <span><select id="country" name="country">
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="uk">UK</option>
+          <option value="china">China</option>
+          <option value="korea">Korea</option>
+        </select></span>
+        <label id="countryerror" class="error">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;</label><br><br>
+
+
+        <label for="gender">Gender:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+
+        <span><input type="radio" id="male" name="gender" value="Male"></span>
+        <span><label for="male">Male</label></span>
+        <span><input type="radio" id="female" name="gender" value="Female"></span>
+        <span><label for="female">Female</label></span>
+        <label id="gendererror" class="error"></label><br><br>
+
+        <span><label for="color">Preferences:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;</label></span>
+        <span><input class="Checkbox" type="checkbox" id="color1" name="color" value="Red"></span>
+        <span><label for="vehicle1">Red</label></span>
+        <span><input class="Checkbox" type="checkbox" id="color2" name="color" value="Green"></span>
+        <span><label for="vehicle2">Green</label></span>
+        <span><input class="Checkbox" type="checkbox" id="color3" name="color" value="Blue"></span>
+        <span><label for="vehicle3">Blue</label></span>
+        <label id="colorerror" class="error"></label><br><br>
+
+
+        <span><label for="phone">Phone:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <input type="number" id="phone" name="phone">
+        <label id="phoneerror" class="error"></label><br><br>
+
+
+        <span><label for="email">Email:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <input type="email" id="email" name="email">
+        <label id="emailerror" class="error"></label><br><br>
+
+
+        <span><label for="pw">Password(6-8 Characters):&emsp;</label></span>
+        <input type="password" id="pw" name="pw">
+        <label id="pwerror" class="error"></label><br><br>
+
+
+        <span><label for="vpw">Verify Password:&emsp;&emsp;&emsp;&emsp;&emsp;</label></span>
+        <input type="password" id="vpw" name="vpw">
+        <label id="vpwerror" class="error"></label><br><br>
+        
+        <span><label for="buttons">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;</label></span>
+        <span><input type="submit" value="send"></span>
+        <span><label for="vpw">&ensp;</label></span>
+        <span><input type="reset" value="clear"></span>
+
+    </form>
+    <script>
+        function validate(){
+            var name=document.forms["loginform"]["name"].value;
+            var add=document.forms["loginform"]["add"].value;
+            var zcode=document.forms["loginform"]["zcode"].value;
+            var country=document.forms["loginform"]["country"].value;
+            var gender=document.forms["loginform"]["gender"].value;
+            //var checkedValue = document.querySelector('.Checkbox:checked').value;
+            var phone=document.forms["loginform"]["phone"].value;
+            var email=document.forms["loginform"]["email"].value;
+            var pw=document.forms["loginform"]["pw"].value;
+            var vpw=document.forms["loginform"]["vpw"].value;
+            
+            var flag=0;
+           if(name=="" || add=="" || zcode=="" || country=="" || gender=="" || phone=="" || email=="" || pw=="" || vpw==""){
+                flag=1;    
+                document.getElementById("error").innerHTML="*Please Enter all required fields";
+                //return false;
+            }
+            else{
+            if(!(/^[a-zA-Z]$/.test(name)) ){
+                flag=1;
+                document.getElementById("nameerror").innerHTML="&emsp;&emsp;*Name should contain only alphabets";
+                //return false;
+            }
+            if(name.length<6 || name.length>12 ){
+                flag=1;
+                document.getElementById("nameerror").innerHTML="&emsp;&emsp;*Name should have minimum 6 characters & maximum 12 charcters";
+                //return false;
+            }
+            if(zcode.length!=6){
+                flag=1;
+                document.getElementById("zcodeerror").innerHTML="&emsp;&emsp;*ZipCode should contain exactly 6 digits";
+                //return false;
+            }
+            let ph=phone.toString();
+            if(ph.length!=10){
+                flag=1;
+                document.getElementById("phoneerror").innerHTML="&emsp;&emsp;*Phone Number should contain exactly 10 digits";
+                
+            }
+            if(!(/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/.test(email))){
+                flag=1;
+                document.getElementById("emailerror").innerHTML="&emsp;&emsp;*Email format is incorrect";
+                
+            }
+            if(pw.length<6 || pw.length>8){
+                flag=1;
+                document.getElementById("pwerror").innerHTML="&emsp;&emsp;*Password should have minimum 6 characters & maximum 8 charcters";
+                
+            }
+            if(pw!=vpw){
+                flag=1;
+                document.getElementById("vpwerror").innerHTML="&emsp;&emsp;*Password and verify password doesnt match";
+                
+            }
+        }
+            if(flag==1){
+                return false;
+            }
+            else{
+                
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

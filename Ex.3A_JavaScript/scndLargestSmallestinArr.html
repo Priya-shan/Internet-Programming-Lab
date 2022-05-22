@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Largest & Smallest element in Array</title>
+</head>
+<body>
+    <h2 id="arr"></h2>
+    <h3 id="result"></h3>
+    <script>
+        const arr=[12,34,5,33,12];
+        document.getElementById("arr").innerHTML=arr;
+        arr.sort(function(a,b){return a-b});
+        document.getElementById("result").innerHTML=arr[1]+" "+arr[arr.length-2];
+    </script>
+</body>
+</html>

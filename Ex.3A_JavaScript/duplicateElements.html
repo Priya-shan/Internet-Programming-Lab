@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Elements</title>
+</head>
+<body>
+    <h3 id="result"></h3>
+        <script>
+            var line=window.prompt("Enter the array elements with space seperated  : ");
+            let duplicateElements=(line)=>{
+                const arr=line.split(" ");
+                lst=[];
+                console.log(arr);
+                const uniquearr=new Set(arr);
+                console.log("==="+uniquearr);
+                for(let i=0;i<arr.length;i++){
+                    item=arr[i];
+                    if(uniquearr.has(item)){
+                        uniquearr.delete(item);
+                    }
+                    else{
+                        lst.push(item);
+                    }
+                    console.log(uniquearr);
+                }
+                console.log("lst"+lst);
+                const res=new Set(lst);
+                var val="";
+                for(items of res.values()){
+                    console.log("items"+items);
+                    val+=items+" ";
+                }
+                return val;
+            }
+            document.getElementById("result").innerHTML=duplicateElements(line);
+        </script>
+</body>
+</html>
