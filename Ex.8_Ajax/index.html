@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <span><label>Enter Roll Number</label><span>
+        <input type="text" id="roll" name="roll">
+        <button onclick="fetch()">Search</button>
+    <h1 id="demo"></h1>
+    <script>
+        
+        function fetch(){
+            var txt="";
+            var xhttp=new XMLHttpRequest();
+           //document.getElementById("demo").innerHTML="hello";
+            xhttp.onreadystatechange=function(){
+                if(this.readyState==4 && this.status==200){
+                    //alert("state changed");
+                    var xmldoc=xhttp.responseXML;
+                    var x=xmldoc.getElementsByTagName("student");
+                    //txt="hi,"+x[0].childNodes[2].nodeValue;
+                    var roll=document.getElementById("roll").value;
+                    for(var i=0;i<x.length;i++){
+                       if(roll==x[i].getElementsByTagName("Roll")[0].childNodes[0].nodeValue){
+                            txt+="Name : "+x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue+
+                            "<br> Department : "+x[i].getElementsByTagName("Dept")[0].childNodes[0].nodeValue+
+                            "<br> Cgpa : "+x[i].getElementsByTagName("cgpa")[0].childNodes[0].nodeValue;
+                        }
+                    }
+                    document.getElementById("demo").innerHTML=txt;
+                }
+            };
+            xhttp.open("GET","StudentDetails.xml",true);
+            xhttp.send();
+
+        }
+    </script>
+</body>
+</html>
